@@ -15,43 +15,27 @@ public void draw()
    sayo[r].show();
   }
 }
-class Particle
 {
-  private int myColor, mySpeed, myAngle;
-  private double myX, myY;
-  {
-   myX = (Math.random() * 50) + 225;
-   myY = (Math.random() * 50) + 225;
-   myColor = (int)(Math.random() * 205) + 50; 
-   mySpeed = (int)(Math.random() * 5) + 2;
-   myAngle = (int)(Math.random() * 360);
-  }
-  public void move()
-  {
-    myX = myX + (Math.cos(myAngle) * mySpeed);
-    myY = myY + (Math.sin(myAngle) * mySpeed);
-  }
-  public void show()
-  {
-   fill(myColor);  
-   ellipse(myX, myY, 10, 10);
-   fill(myColor);
-   ellipse((myX - 2), (myY + 1), 3, 3);
-   ellipse((myX + 1), (myY - 2), 3, 3);
-  }
+    if (mouseButton == LEFT){
+      for(int r = 0; r < sayo.length - 1; r++){
+      sayo[r] = new Particle();
+     }
+   }
 }
 
-class OddballParticle //inherits from Particle
+
+
+
+class OddballParticle extends Particle//inherits from Particle
 {
   private int myColor;
-  private double myX, myY;
-  {
-   myX = (Math.random() * 498) + 1;
-   myY = (Math.random() * 498) + 1;
-   myColor = (int)(Math.random() * 205) + 50;
+  private int myX, myY;
+  OddballParticle(){
+   myX = (int)(Math.random() * 498) + 1;
+   myY = (int)(Math.random() * 498) + 1;
+   myColor = (123);
   }
-  public void move()
-  {
+  public void move(){
      myX = myX + (int)(Math.random() * 11) - 5;
      myY = myY + (int)(Math.random() * 11) - 5;
     if(myX < mouseX){
@@ -71,5 +55,34 @@ class OddballParticle //inherits from Particle
   {
     fill(myColor);  
     ellipse(myX, myY, 25, 25);
+  }
+}
+
+
+
+
+class Particle
+{
+  private int myColor, mySpeed, myAngle;
+  private int myX, myY;
+  Particle(){
+   myX = (int)(Math.random() * 50) + 225;
+   myY = (int)(Math.random() * 50) + 225;
+   myColor = (int)(Math.random() * 205) + 50; 
+   mySpeed = (int)(Math.random() * 5) + 2;
+   myAngle = (int)(Math.random() * 360);
+  }
+  public void move()
+  {
+    myX = myX + (int)(Math.cos(myAngle) * mySpeed);
+    myY = myY + (int)(Math.sin(myAngle) * mySpeed);
+  }
+  public void show()
+  {
+   fill(myColor);  
+   ellipse(myX, myY, 10, 10);
+   fill(myColor);
+   ellipse((myX - 2), (myY + 1), 3, 3);
+   ellipse((myX + 1), (myY - 2), 3, 3);
   }
 }
